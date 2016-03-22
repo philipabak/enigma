@@ -1,0 +1,36 @@
+#why.slide-item
+  .card.expandable.bg-orange
+    .card-img.bg-full(style="background-image: url(#{asset_path('astley.jpg')})")
+    .card-caption.pad
+      %h3 KEEPING BUSINESS SIMPLE
+      %p At Enigma Telematics, we believe business should be conducted with honesty, integrity and transparency.
+      %p In an industry full of the latest ‘buzzwords’ and confusing acronyms, we are passionate about providing simple, bespoke solutions that make a real difference.
+      %a.toggle-content.toggle-link.read_more_why(href='#' data-target='why-detail')
+        read more
+        %i.icon.icon-plus-circled
+
+- content_for :item_detail do
+  #why-detail.item-detail.item-expandable.bg-orange.bg-full(style="background-image: url(#{asset_path('kato.jpg')})")
+    %a.toggle-content.toggle-link(href='#' data-target='why-detail')
+      close
+      %i.icon.icon-cancel-circled
+    .row
+      .col-md-6.col-xs-12.no-right-pad
+        .card.expandable.bg-orange
+          .card-caption.pad
+            %h3 WE RECOGNISE THAT BUSINESSES, JUST LIKE PEOPLE, ARE UNIQUE
+            %p Every business faces a different set of challenges. Rather than offering an off-the-shelf, one-size-first-all solution, we prefer to first consult with our customers, to better understand the complexities of a particular problem.
+            %p By applying the industry know-how and expertise that we have built up over the last 23 years, we can devise bespoke solutions, tailored to individual customer requirements.
+            %p We hope that this exibility, combined with the belief that business should be conducted in an honourable and ethical way, sets us out from the crowd.
+            %p To learn more about our ethos, please click #{link_to 'here', 'javascript: void(0);'}.
+            .row
+              .col-md-4.col-xs-4
+                = image_tag 'astley.jpg', alt: '', class: 'img-responsive'
+
+      .col-md-6.col-xs-12.no-left-pad
+        .card.expandable
+          .card-caption.mission.pad
+            %h4.text-right OUR MISSION
+            .wrap_mission_text
+              %h2.text-green.text-right TO HELP OTHER BUSINESS IMPROVE, BY PROVIDING THEM WITH HIGH-QUALITY TEMEMATICS SOLUTIONS.
+    = render 'shared/ribbon'

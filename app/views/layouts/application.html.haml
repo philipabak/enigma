@@ -1,0 +1,107 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "Enigma"
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag "application", media: "all"
+    - if false
+      = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '144x144'
+      = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '114x114'
+      = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '72x72'
+      = favicon_link_tag 'apple-touch-icon-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png'
+    = favicon_link_tag 'favicon.ico', rel: 'shortcut icon'
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'https://maps.googleapis.com/maps/api/js'
+
+  %body(class="#{controller_name}-#{action_name}")
+    = render 'shared/header'
+
+    #main-bg.bg-full(style="background-image: url(#{asset_path(main_bg)})")
+      .container
+        .row.row-top
+          .col-md-9
+            .text-center
+              .main-head SOLUTIONS DESIGNED TO KEEP BUSINESS SIMPLE
+              %br
+              .main-head OPTIMISING FLEET PERFORMANCE AND SAFETY WITH TELEMATICS
+            #tab-slider
+              - %w(why how what markets case_studies news tutorials live_traffic).each_with_index do |tab, i|
+                %li(data-target='#main-slider' data-slide-to="#{i}" class="#{'active' if i == 0}")
+                  = link_to tab.humanize, root_path(anchor: tab)
+
+          .col-md-3.ws-only
+            #weather-forecast
+              .row
+                .col-xs-7
+                  .location= [@current_location.city, @current_location.country_code].reject(&:blank?).join(', ')
+                  .current-time
+                .col-xs-5
+                  .current-weather
+                    - if @current_weather
+                      - weather = @current_weather['weather'].first
+                      = image_tag "http://openweathermap.org/img/w/#{weather['icon']}.png", alt: weather['main'], class: 'weather-icon'
+                    - else
+                      %i.icon.icon-cloud-sun
+              .row
+                .col-xs-12
+                  = link_to 'javascript: void(0);', class: 'change-location pull-left' do
+                    %i.icon.icon-location
+                    change location
+                  .sync-progress.pull-right.hide
+                    %i.icon.icon-spin3.animate-spin
+
+        .row.row-middle
+          .col-md-9
+            #main-content= yield
+
+          .col-md-3.ws-only
+            #tutorials-video.bg-red.clearfix
+              = link_to 'javascript: void(0);', class: 'play-tutorials' do
+                TUTORAILS
+                = image_tag 'tutorials.jpg', alt: 'Play'
+
+            #tweets
+              .header.clearfix
+                Twitter
+                .pull-right
+                  %i.icon.icon-twitter
+              .content
+                %a.twitter-timeline(data-widget-id='655059920883060736' href='https://twitter.com/EnigmaSystems') LATEST TWEETS
+                :javascript
+                  $('#twitter-wjs').remove();
+                  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+    .ws-only= render 'shared/footer'
+
+:javascript
+  $(function(){
+    $('#how .expandable .tabbable').css('height', '150px');
+    $('#how .expandable .tabbable').css('overflow-y', 'auto');
+    $('.read_more_why').click(function() {
+      $('.wrap_mission_text').css('display', 'none');
+      $('.wrap_mission_text').fadeIn( 3000, function() {
+      });
+    });
+
+    $('.second_keys').click(function() {
+      if($(this).attr('id') != $('#second_key').val()){
+        $('#' + $('#second_key').val()).closest('li').find('.tab-content').slideUp();
+      }
+      $('#second_key').val($(this).attr('id'));
+    });
+
+    $('.first_keys').click(function() {
+      if($(this).attr('id') != $('#first_key').val()){
+        $('#' + $('#first_key').val()).closest('li').find('.tab-content').slideUp();
+      }
+      $('#first_key').val($(this).attr('id'));
+    });
+
+
+  })

@@ -1,0 +1,70 @@
+#case_studies.slide-item
+  .card.expandable.bg-orange
+    .card-caption.pad
+      %h3 LATEST CASE STUDIES
+      %p Ur opti doluptat que plia sequibus et evellestibus pellabor aspid mo ipidebis nonsedi numqui simodit eossinu lliqui beri at que venimaxim rem quam ratquae nest.
+      %ul.image-gallery.list-unstyled
+        - [0, 1, 4, 5].each do |i|
+          - x = @case_studies[i]
+          %li.item.bg-full.toggle-content(href='#' style="background-image: url(#{x.image_url(:thumb)})" data-target="case-study-#{x.id}")
+            .overlay.overlay-hf-dark
+              %a.bg-file.green(href='javascript: void(0);')
+                %span.company-name #{x.company} //
+                %span.case-branch= x.branch
+      %a.toggle-content.toggle-link(href='#' data-target='case-studies-detail')
+        %i.icon.icon-plus-circled
+
+- content_for :item_detail do
+  #case-studies-detail.item-detail.item-expandable.bg-orange
+    %a.toggle-content.toggle-link(href='#' data-target='case-studies-detail')
+      close
+      %i.icon.icon-cancel-circled
+    .card.expandable
+      .card-caption.pad
+        %h3 LATEST CASE STUDIES
+        %p Ur opti doluptat que plia sequibus et evellestibus pellabor aspid mo ipidebis nonsedi numqui simodit eossinu lliqui beri at que venimaxim rem quam ratquae nest.
+        %ul.image-gallery.list-unstyled
+          - @case_studies.each do |x|
+            %li.item.bg-full.toggle-content(href='#' style="background-image: url(#{x.image_url(:thumb)})" data-target="case-study-#{x.id}")
+              .overlay.overlay-hf-dark
+                %a.bg-file.green(href='javascript: void(0);')
+                  %span.company-name #{x.company} //
+                  %span.case-branch= x.branch
+
+            - content_for :case_detail do
+              .case-study-container.item-expandable.bg-orange(id="case-study-#{x.id}")
+                %a.toggle-content.toggle-link(href='#' data-target="case-study-#{x.id}")
+                  close
+                  %i.icon.icon-cancel-circled
+                .card.expandable
+                  .card-caption.pad
+                    .nano.scrollable
+                      .nano-content
+                        .row
+                          .col-xs-12
+                            %h3 CASE STUDY
+                        .row.case-study-detail
+                          .col-md-5.col-xs-12
+                            = image_tag x.image_url, alt: '', class: 'img-responsive'
+                            %ul.tabbable.list-unstyled
+                              %li
+                                %a.expand-key(href='#')
+                                  %span.text-blue-dark
+                                    %i.icon.icon-plus-circled
+                                    %i.icon.icon-minus-circled
+                                    "What #{x.company} have to say about us..."
+                                .tab-content.italic
+                                  %p "#{x.feedback}"
+                                  %p
+                                    %small
+                                      #{x.feedbacker_name},
+                                      %br
+                                      #{x.job} at #{x.company}
+                          .col-md-7.col-xs-12
+                            .case-study-body
+                              %h4
+                                %span.company-name #{x.company} //
+                                %span.case-branch= x.branch
+                              = x.body.html_safe
+
+    = render 'shared/ribbon'

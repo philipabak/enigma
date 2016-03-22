@@ -1,0 +1,35 @@
+#what.slide-item
+  .card.expandable.bg-green
+    .card-img.bg-full(style="background-image: url(#{asset_path('shovel.jpg')})")
+    .card-caption.pad
+      %h3 ENIGMA TELEMATICS IS A SOLUTIONS-PROVIDER
+      %p We specialise in telematics services for businesses in the construction, plant, waste management and commercial vehicle markets.
+      %p <b>Skyline</b> is our product range; a web-based suite of fleet management and security solutions, able to extract maximum value from remote assets - vehicles, plant and heavy machinery.
+      %a.toggle-content.toggle-link(href='#' data-target='what-detail')
+        read more
+        %i.icon.icon-plus-circled
+
+- content_for :item_detail do
+  #what-detail.item-detail.item-expandable.bg-green
+    %a.toggle-content.toggle-link(href='#' data-target='what-detail')
+      close
+      %i.icon.icon-cancel-circled
+    .row
+      .row-same-height.row-full-height
+        .col-md-3.col-xs-12.col-full-height.col-xs-height.no-right-pad
+          .card.bg-full(style="background-image: url(#{asset_path('shovel.jpg')})")
+        .col-md-9.col-xs-12.col-full-height.col-xs-height.no-left-pad
+          .card.expandable.bg-green
+            .card-caption.pad
+              %h3 ENIGMA TELEMATICS IS A SOLUTIONS-PROVIDER
+              %p We specialise in telematics services for businesses in the construction, plant, waste management and commercial vehicle markets.
+              %p <b>Skyline</b> is our product range; a web-based suite of fleet management and security solutions, able to extract maximum value from remote assets - vehicles, plant and heavy machinery.
+              %p A flexible management tool, Skyline delivers the…
+              %ul.list-unstyled
+                %li …present status of remote assets to your finger tips
+                %li …5%-10% of management data needed to make valued change
+                %li …customised back-office system unique to your business
+                %li …peace of mind provided by self-auditing security
+                %li …information needed to fulfil your ‘Duty of Care’ responsibilities
+
+    = render 'shared/ribbon'

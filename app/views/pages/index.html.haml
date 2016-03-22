@@ -1,0 +1,13 @@
+#main-slider
+  .slide-wrap
+    - %w(why how what markets case_studies news tutorials live_traffic).each do |partial|
+      = render partial
+  .hidden-wrap
+    - if content_for? :item_detail
+      = yield :item_detail
+    - if content_for? :news_list
+      = yield :news_list
+    - if content_for? :news_detail
+      = yield :news_detail
+    - if content_for? :case_detail
+      = yield :case_detail

@@ -1,0 +1,90 @@
+#news.slide-item
+  .card.expandable.bg-blue
+    .card-caption.pad
+      %h3 LATEST NEWS
+      .news-grid.clearfix
+        .col.col-2
+          .col-item.row-full.bg-grey.bg-full(style="background-image: url(#{@news[0].image_url})")
+            .news-title.title.bg-black= @news[0].title
+            %a.toggle-content.toggle-link(href='#' data-target="news-#{@news[0].id}")
+              %i.icon.icon-plus-circled
+
+      %a.toggle-content.toggle-link(href='#' data-target='news-detail')
+        %i.icon.icon-plus-circled
+
+- content_for :item_detail do
+  #news-detail.item-detail.item-expandable.bg-blue
+    %a.toggle-content.toggle-link(href='#' data-target='news-detail')
+      close
+      %i.icon.icon-cancel-circled
+    .card.expandable
+      .card-caption.pad
+        %h3 LATEST NEWS
+        .news-grid.clearfix
+          .col.col-2
+            .col-item.row-full.bg-grey.bg-full(style="background-image: url(#{@news[0].image_url})")
+              .news-title.title.bg-black= @news[0].title
+              %a.toggle-content.toggle-link(href='#' data-target="news-#{@news[0].id}")
+                %i.icon.icon-plus-circled
+          .col.col-2
+            .col-item.row-half.bg-grey.bg-full(style="background-image: url(#{@news[1].image_url})")
+              .news-title.title.bg-black= @news[1].title
+              %a.toggle-content.toggle-link(href='#' data-target="news-#{@news[1].id}")
+                %i.icon.icon-plus-circled
+            .col-item.row-half.bg-grey.bg-full(style="background-image: url(#{@news[2].image_url})")
+              .news-title.title.bg-black= @news[2].title
+              %a.toggle-content.toggle-link(href='#' data-target="news-#{@news[2].id}")
+                %i.icon.icon-plus-circled
+          .col.col-1
+            .col-item.row-one-third.bg-grey.bg-full(style="background-image: url(#{@news[3].image_url})")
+              .news-title.title.bg-black= @news[3].title
+              %a.toggle-content.toggle-link(href='#' data-target="news-#{@news[3].id}")
+                %i.icon.icon-plus-circled
+            .col-item.row-one-third.bg-grey.bg-full(style="background-image: url(#{@news[4].image_url})")
+              .news-title.title.bg-black= @news[4].title
+              %a.toggle-content.toggle-link(href='#' data-target="news-#{@news[4].id}")
+                %i.icon.icon-plus-circled
+            .col-item.row-one-third.bg-grey.bg-full
+              .news-title.title.bg-black.view-archive VIEW NEWS ARCHIVE
+              %a.toggle-content.toggle-link(href='#' data-target='news-list')
+                %i.icon.icon-plus-circled
+    = render 'shared/ribbon'
+
+- content_for :news_list do
+  #news-list.item-expandable.bg-blue
+    %a.toggle-content.toggle-link(href='#' data-target='news-list')
+      close
+      %i.icon.icon-cancel-circled
+    .card.expandable
+      .card-caption.pad
+        %h3 LATEST NEWS
+        %ul.news-archive.list-unstyled
+          - @news.each do |x|
+            %li.toggle-content(href='#' data-target="news-#{x.id}")
+              .row
+                .col-xs-1
+                  = image_tag x.image_url, alt: x.title, class: 'img-responsive'
+                .col-xs-2
+                  .text-green= x.published_at.strftime('%e %b %Y') if x.published_at
+                .col-xs-9
+                  = x.title
+
+            - content_for :news_detail do
+              .news-container.item-expandable.bg-blue(id="news-#{x.id}")
+                %a.toggle-content.toggle-link(href='#' data-target="news-#{x.id}")
+                  close
+                  %i.icon.icon-cancel-circled
+                .card.expandable
+                  .card-caption.pad
+                    .row
+                      .col-xs-12
+                        %h3 LATEST NEWS
+                    .row.news-detail
+                      .row-same-height.row-full-height
+                        .col-md-5.col-xs-12.col-full-height.col-xs-height
+                          .news-img.full-height.bg-full(style="background-image: url(#{x.image_url})")
+                            %h3.news-title.title.bg-black= x.title
+                        .col-md-7.col-xs-12.col-full-height.col-xs-height
+                          .news-content
+                            = x.content.html_safe
+    = render 'shared/ribbon'

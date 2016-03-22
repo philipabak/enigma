@@ -1,0 +1,133 @@
+#how.slide-item
+  .card.expandable.bg-blue
+    .card-img.bg-full(style="background-image: url(#{asset_path('shutterstock.jpg')})")
+    .card-caption.pad
+      %h3 WE REMAIN TRUE TO THE FOLLOWING KEY PRINCIPLES:
+      %input#first_key(type="hidden")
+      %ul.tabbable
+        %li
+          %a.expand-key.first_keys#first_keys1(href='javascript: void(0);')
+            %span.text-blue-dark
+              %i.icon.icon-plus-circled
+              %i.icon.icon-minus-circled
+            %span.text-white We listen
+          .tab-content
+            %p Rather than offering a one-size-fits-all solution, we prefer to consult with our customers, to better understand their unique requirements.
+            %p We monitor the market as a whole, to spot trends and to anticipate what products and services consumers are likely to require in the future.
+            .bg-file.green(href='javascript: void(0);')
+              %b CASE STUDY:
+              See how Enigma Telematics developed a purpose-built fleet management system for A-Plant, one of the UK’s leading plant hire companies.
+              %br
+              = link_to 'read case study', 'http://www.enigmavehicle.co.uk/case-studies/a-trak/', target: '_blank'
+        %li
+          %a.expand-key.first_keys#first_keys2(href='javascript: void(0);')
+            %span.text-blue-dark
+              %i.icon.icon-plus-circled
+              %i.icon.icon-minus-circled
+            %span.text-white Added-value information
+          .tab-content
+            %p Telematics can provide users with a huge amount of data.  At Enigma Telematics, we focus on extracting information from data, so that our customers can make positive changes to the way they do business.
+            .bg-file.green(href='javascript: void(0);')
+              %b CASE STUDY:
+              See how civil engineering and utilities specialist, Murphy Group, is able to extract maximum value from its vehicles and plant using Enigma Telematics’ Skyline system.
+              %br
+              = link_to 'read case study', 'http://www.enigmavehicle.co.uk/case-studies/murphy-group/', target: '_blank'
+        %li
+          %a.expand-key.first_keys#first_keys3(href='javascript: void(0);')
+            %span.text-blue-dark
+              %i.icon.icon-plus-circled
+              %i.icon.icon-minus-circled
+            %span.text-white Experience
+          .tab-content
+            %p Using industry know-how and technological expertise built-up over the last 23 years, we can be confident that our custom-fit solutions are perfect for the rigours of today’s marketplace.
+            .bg-file.green(href='javascript: void(0);')
+              %b CASE STUDY:
+              See why Selwood Ltd, one of the UK’s leading plant hire and sales companies, chose Enigma as its preferred supplier of telematics services.
+              %br
+              = link_to 'read case study', 'http://www.enigmavehicle.co.uk/case-studies/selwood/', target: '_blank'
+        %li
+          %a.expand-key.first_keys#first_keys4(href='javascript: void(0);')
+            %span.text-blue-dark
+              %i.icon.icon-plus-circled
+              %i.icon.icon-minus-circled
+            %span.text-white Partnering
+          .tab-content
+            %p By working in collaboration with our customers and treating our trusted suppliers as equals, we have been able to build strong, long-term relationships that bring out the best of everyone involved.
+            .bg-file.green(href='javascript: void(0);')
+              %b CASE STUDY:
+              Learn more about Enigma Telematics’ relationship with the Metropolitan Police’s specialist Plant and Agriculture Unit (PANIU).
+              %br
+              = link_to 'read case study', 'http://www.enigmavehicle.co.uk/news/sponsor-metropolitan-police-plant-agriculture-unit/', target: '_blank'
+      %a.toggle-content.toggle-link(href='#' data-target='how-detail')
+        read more
+        %i.icon.icon-plus-circled
+
+- content_for :item_detail do
+  #how-detail.item-detail.item-expandable
+    %a.toggle-content.toggle-link(href='#' data-target='how-detail')
+      close
+      %i.icon.icon-cancel-circled
+    .row
+      .row-same-height.row-full-height
+        .col-md-3.col-xs-12.col-full-height.col-xs-height.no-right-pad
+          .card.bg-full(style="background-image: url(#{asset_path('shutterstock.jpg')})")
+        .col-md-9.col-xs-12.col-full-height.col-xs-height.no-left-pad
+          .card.expandable.bg-blue
+            .card-caption.pad
+              %h3 WE REMAIN TRUE TO THE FOLLOWING KEY PRINCIPLES:
+              %input#second_key(type="hidden")
+              %ul.tabbable
+                %li
+                  %a.expand-key.second_keys#second_keys1(href='javascript: void(0);')
+                    %span.text-blue-dark
+                      %i.icon.icon-plus-circled
+                      %i.icon.icon-minus-circled
+                    %span.text-white We listen
+                  .tab-content
+                    %p Rather than offering a one-size-fits-all solution, we prefer to consult with our customers, to better understand their unique requirements.
+                    %p We monitor the market as a whole, to spot trends and to anticipate what products and services consumers are likely to require in the future.
+                    .bg-file.green(href='javascript: void(0);')
+                      %b CASE STUDY:
+                      See how Enigma Telematics developed a purpose-built fleet management system for A-Plant, one of the UK’s leading plant hire companies.
+                      %br
+                      = link_to 'read case study', 'http://www.enigmavehicle.co.uk/case-studies/a-trak/', target: '_blank'
+                %li
+                  %a.expand-key.second_keys#second_keys2(href='javascript: void(0);')
+                    %span.text-blue-dark
+                      %i.icon.icon-plus-circled
+                      %i.icon.icon-minus-circled
+                    %span.text-white Added-value information
+                  .tab-content
+                    %p Telematics can provide users with a huge amount of data.  At Enigma Telematics, we focus on extracting information from data, so that our customers can make positive changes to the way they do business.
+                    .bg-file.green(href='javascript: void(0);')
+                      %b CASE STUDY:
+                      See how civil engineering and utilities specialist, Murphy Group, is able to extract maximum value from its vehicles and plant using Enigma Telematics’ Skyline system.
+                      %br1
+                      = link_to 'read case study', 'http://www.enigmavehicle.co.uk/case-studies/murphy-group/', target: '_blank'
+                %li
+                  %a.expand-key.second_keys#second_keys3(href='javascript: void(0);')
+                    %span.text-blue-dark
+                      %i.icon.icon-plus-circled
+                      %i.icon.icon-minus-circled
+                    %span.text-white Experience
+                  .tab-content
+                    %p Using industry know-how and technological expertise built-up over the last 23 years, we can be confident that our custom-fit solutions are perfect for the rigours of today’s marketplace.
+                    .bg-file.green(href='javascript: void(0);')
+                      %b CASE STUDY:
+                      See why Selwood Ltd, one of the UK’s leading plant hire and sales companies, chose Enigma as its preferred supplier of telematics services.
+                      %br
+                      = link_to 'read case study', 'http://www.enigmavehicle.co.uk/case-studies/selwood/', target: '_blank'
+                %li
+                  %a.expand-key.second_keys#second_keys4(href='javascript: void(0);')
+                    %span.text-blue-dark
+                      %i.icon.icon-plus-circled
+                      %i.icon.icon-minus-circled
+                    %span.text-white Partnering
+                  .tab-content
+                    %p By working in collaboration with our customers and treating our trusted suppliers as equals, we have been able to build strong, long-term relationships that bring out the best of everyone involved.
+                    .bg-file.green(href='javascript: void(0);')
+                      %b CASE STUDY:
+                      Learn more about Enigma Telematics’ relationship with the Metropolitan Police’s specialist Plant and Agriculture Unit (PANIU).
+                      %br
+                      = link_to 'read case study', 'http://www.enigmavehicle.co.uk/news/sponsor-metropolitan-police-plant-agriculture-unit/', target: '_blank'
+    = render 'shared/ribbon'

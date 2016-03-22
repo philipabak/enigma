@@ -1,0 +1,23 @@
+#live_traffic.slide-item
+  .card.expandable.bg-grey
+    .card-caption.pad
+      .traffic-container
+        = image_tag 'live_traffic.jpg', alt: 'LIVE TRAFFIC REPORT', class: 'img-responsive'
+      %a.toggle-content.toggle-link(href='#' data-target='live-traffic-detail')
+        %i.icon.icon-plus-circled
+
+- content_for :item_detail do
+  #live-traffic-detail.item-detail.item-expandable.bg-grey
+    %a.toggle-content.toggle-link(href='#' data-target='live-traffic-detail')
+      close
+      %i.icon.icon-cancel-circled
+    .card.expandable
+      .card-caption.pad
+        .traffic-container
+          .caption.title.bg-black
+            %h3 LIVE TRAFFIC REPORT
+          #live-traffic-map.map
+          .caption.location-detail.bg-white
+            %i.icon.icon-location.text-orange
+            Location
+    = render 'shared/ribbon'

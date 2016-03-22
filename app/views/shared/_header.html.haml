@@ -1,0 +1,92 @@
+#main-nav.navbar.navbar-default.navbar-static-top
+  .container
+    %a.navbar-toggle.menu-button(type='button')
+      %i.icon.icon-user
+    %a.navbar-toggle.menu-button(type='button' data-toggle='collapse' data-target='.navbar-responsive-collapse')
+      %i.icon.icon-menu
+    %a.navbar-toggle.menu-button(type='button')
+      %i.icon.icon-share
+    %a.navbar-brand(href=root_path)
+      = image_tag 'logo.png', alt: 'skyline', class: 'h-logo'
+    .navbar-collapse.collapse.navbar-responsive-collapse
+      %form.navbar-form.navbar-right.ws-only
+        /.form-group
+        /  %input.form-control.input-sm(type='text' placeholder='Search')
+        .form-group(style='margin-right: 10px;')
+          .dropdown
+            = link_to '#', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false, class: 'btn-call-back btn btn-gray btn-sm custom_dropdown_menu_callme' do
+              CALL ME BACK
+              %i.icon.icon-fax
+            %ul.dropdown-menu.call-back.custom_dropdown_callme(style='padding:5px;')
+              %li
+                %input.form-control(type='text' placeholder='Name')
+              %li
+                %input.form-control(type='text' placeholder='Telephone')
+              %li
+                %input.form-control.btn.btn-success(type='submit' value='Send' style='width:100%;')
+
+        .form-group
+          .dropdown
+            = link_to '#', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false, class: 'btn-call-back btn btn-gray btn-sm custom_dropdown_menu_emailus' do
+              EMAIL US A QUERY
+              %i.icon.icon-mail
+            %ul.dropdown-menu.call-back.custom_dropdown_emailus(style='padding:5px;')
+              %li
+                %input.form-control(type='text' placeholder='Name')
+              %li
+                %input.form-control(type='text' placeholder='Email')
+              %li
+                %input.form-control(type='text' placeholder='Query')
+              %li
+                %input.form-control.btn.btn-success(type='submit' value='Send' style='width:100%;')
+        .form-group
+          = link_to '#', class: 'btn btn-sm btn-transparent login' do
+            Log in
+            %i.icon.icon-user
+      %ul#nav-links.nav.navbar-nav.navbar-right(style='margin-right:5%;')
+        %li= link_to 'Products', '#'
+        %li(class="#{'active' if action_name == 'about'}")
+          = link_to 'About us', pages_about_path
+        %li(class="#{'active' if action_name == 'contact'}")
+          = link_to 'Contact', pages_contact_path
+        %li.dropdown
+          = link_to '#', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false do
+            More
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to 'Help', '#'
+            %li= link_to 'Industry Jargon Buster', pages_industry_jargon_buster_path
+            %li= link_to 'International', pages_international_path
+            %li= link_to 'Viasat Group', pages_viasat_group_path
+            %li= link_to 'Duty of Care', pages_duty_of_care_path
+
+:javascript
+  $(function(){
+    $('.custom_dropdown_menu_callme').click(function(){
+      if($(this).closest('div').hasClass('open_dropdown')){
+        $('.custom_dropdown_callme').css('display', 'none');
+        $(this).closest('div').removeClass('open_dropdown');
+      }else{
+        $('.custom_dropdown_callme').css('display', 'block');
+        $(this).closest('div').addClass('open_dropdown');
+      }
+    });
+
+    $('.custom_dropdown_callme').click(function(){
+      $(this).css('display', 'block');
+    });
+
+    $('.custom_dropdown_menu_emailus').click(function(){
+      if($(this).closest('div').hasClass('open_dropdown')){
+        $('.custom_dropdown_emailus').css('display', 'none');
+        $(this).closest('div').removeClass('open_dropdown');
+      }else{
+        $('.custom_dropdown_emailus').css('display', 'block');
+        $(this).closest('div').addClass('open_dropdown');
+      }
+    });
+
+    $('.custom_dropdown_emailus').click(function(){
+      $(this).css('display', 'block');
+    });
+  });

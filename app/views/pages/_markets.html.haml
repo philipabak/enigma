@@ -1,0 +1,54 @@
+#markets.slide-item
+  .card.expandable.bg-grey
+    .card-img.bg-full(style="background-image: url(#{asset_path('car.jpg')})")
+    .card-caption.pad
+      %h3 MARKETS
+      %p Skyline is a simple, robust, powerful and flexible information solution, designed to help UK and international businesses:
+      %ul.list-disc
+        %li Logistics, Service Management & Road Transport
+        %li Construction
+        %li Agricultural Machinery & Equipment
+        %li Waste Management
+      %a.toggle-content.toggle-link(href='#' data-target='markets-detail')
+        read more
+        %i.icon.icon-plus-circled
+
+- content_for :item_detail do
+  #markets-detail.item-detail.item-expandable.bg-grey
+    %a.toggle-content.toggle-link(href='#' data-target='markets-detail')
+      close
+      %i.icon.icon-cancel-circled
+    .row
+      .row-same-height.row-full-height
+        .col-md-3.col-xs-12.col-full-height.col-xs-height.no-right-pad
+          .card.bg-full(style="background-image: url(#{asset_path('car.jpg')})")
+        .col-md-9.col-xs-12.col-full-height.col-xs-height.no-left-pad
+          .card.expandable
+            .card-caption.pad
+              %h3 MARKETS
+              %p Skyline is a simple, robust, powerful and flexible information solution, designed to help UK and international businesses:
+              %table#markets-table.text-center(width='100%' )
+                %tr
+                  %td(width='50%')
+                    = image_tag 'logistics.png', alt: 'Logistics, Service Management and Road Transport', width: 120
+                    %p Logistics, Service Management & Road Transport
+                    %a.bg-file.green{data: { toggle: 'popover', content: '<ul><li>Fleet planning information – scheduling and maintenance</li><li>Vehicle and driver performance monitoring – speeding, harsh breaking, harsh acceleration, idling, out of hours, duty time, MPG</li><li>Proven theft alerting and recovery</li></ul>'} }
+                      VIEW CASE STUDY
+                  %td(width='50%')
+                    = image_tag 'construction.png', alt: 'Construction', width: 120
+                    %p Construction
+                    %a.bg-file.green{data: { toggle: 'popover', content: '<ul><li>Proven theft prevention, alerting and recovery system approved by Thatcham for insurance purposes</li><li>Fleet performance – usage, movement, diagnostics and user control</li></ul>'} }
+                      VIEW CASE STUDY
+                %tr
+                  %td(width='50%')
+                    = image_tag 'plant.png', alt: 'Agricultural Machinery & Equipment', width: 120
+                    %p Plant & Agriculture
+                    %a.bg-file.green{data: { toggle: 'popover', content: '<ul><li>Proven theft prevention, alerting and recovery systems, approved by Thatcham for insurance purposes</li></ul>'} }
+                      VIEW CASE STUDY
+                  %td(width='50%')
+                    = image_tag 'waste.png', alt: 'Waste Management', width: 120
+                    %p Waste Management
+                    %a.bg-file.green{data: { toggle: 'popover', content: '<ul><li>Fleeting control in a market where cost control and efficient management of assets is critical</li></ul>'} }
+                      VIEW CASE STUDY
+
+    = render 'shared/ribbon'

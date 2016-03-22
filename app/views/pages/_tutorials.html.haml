@@ -1,0 +1,37 @@
+#tutorials.slide-item
+  .card.expandable.bg-green
+    .card-caption.pad
+      %h3 SKYLINE ONLINE TUTORIALS
+      %p Ihil ipis endae que qui to omnis cor resecesti o cit et o cta vendignist odiassum, omnis molorerchil il ipsant etur?
+      %ul.list-unstyled
+        - 3.times do
+          %li
+            .row
+              .col-md-6.col-xs-12
+                .video.bg-full{style: "background-image: url(#{asset_path('video.jpg')})"}
+                  .video-title.title.bg-orange Video Title
+              .col-md-6.col-xs-12
+                .video-description
+                  = truncate("Et quidem ut doloremque aut vitae nisi. Veniam dolorum quis assumenda exercitationem dolorem. Impedit tenetur alias repudiandae aut. Consequatur voluptatibus corrupti ut qui minima rem eum.", length: 75)
+
+      %a.toggle-content.toggle-link(href='#' data-target='tutorials-detail')
+        %i.icon.icon-plus-circled
+
+- content_for :item_detail do
+  #tutorials-detail.item-detail.item-expandable.bg-green
+    %a.toggle-content.toggle-link(href='#' data-target='tutorials-detail')
+      close
+      %i.icon.icon-cancel-circled
+    .card.expandable
+      .card-caption.pad
+        %h3 SKYLINE ONLINE TUTOIRALS
+        .video-container
+          %ul.tutorial-videos.list-unstyled.clearfix
+            - 6.times do
+              %li
+                .video.bg-full{style: "background-image: url(#{asset_path('video.jpg')})"}
+                  .video-title.title.bg-orange Video Title
+                .video-description
+                  = truncate("Et quidem ut doloremque aut vitae nisi. Veniam dolorum quis assumenda exercitationem dolorem. Impedit tenetur alias repudiandae aut. Consequatur voluptatibus corrupti ut qui minima rem eum.", length: 100)
+
+    = render 'shared/ribbon'
